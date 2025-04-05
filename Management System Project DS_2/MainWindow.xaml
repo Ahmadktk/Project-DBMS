@@ -51,7 +51,7 @@
                     <!-- Title -->
                     <TextBlock Text="MAKKAH TRADERS" FontSize="24"
                                Foreground="#FF068BC9" HorizontalAlignment="Left"
-                               Margin="149,307,0,70" FontFamily="Bahnschrift" 
+                               Margin="149,305,0,72" FontFamily="Bahnschrift" 
                                FontWeight="Bold" Width="207"/>
 
                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="378,148,0,0">
