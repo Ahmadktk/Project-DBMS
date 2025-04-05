@@ -1,0 +1,73 @@
+﻿<Window x:Class="Management_System_Project_DS_2.Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Management_System_Project_DS_2"
+        mc:Ignorable="d"
+        Title="Dashboard" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+
+
+    <Grid>
+        <!-- Side Menu -->
+        <Grid Width="200" HorizontalAlignment="Left">
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
+            <StackPanel>
+                <TextBlock Text="Dashboard" Foreground="White" FontSize="18" FontWeight="Bold" Margin="10"/>
+                <Button Content="Category" Background="Transparent" Foreground="White" Margin="5"/>
+                <Button Content="Products" Background="Transparent" Foreground="White" Margin="5"/>
+                <Button Content="Orders" Background="Transparent" Foreground="White" Margin="5"/>
+                <Button Content="Reports" Background="Transparent" Foreground="White" Margin="5"/>
+                <Button Content="Users" Background="Transparent" Foreground="White" Margin="5"/>
+                <Button Content="Suppliers" Background="Transparent" Foreground="White" Margin="5"/>
+                <Button Content="Logout" Background="Transparent" Foreground="White" Margin="5"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Header -->
+        <Grid Height="60" Background="#34495E" VerticalAlignment="Top" Margin="200,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Shop Name & Logo -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                <!-- Logo -->
+                <Image Source="/Makkah-Traders-Logo.jpg" Width="40" Height="40" 
+                    HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Stretch="UniformToFill">
+                    <Image.Clip>
+                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                    </Image.Clip>
+                </Image>
+                <TextBlock Text="Makkah Traders" Foreground="White" FontSize="16" FontWeight="Bold" Margin="10,0,0,0"/>
+            </StackPanel>
+
+            <!-- Time & User Info -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="1" Margin="10">
+                <TextBlock Name="CurrentTime" Foreground="White" FontSize="14" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <Image Source="/user_dp.png" Width="40" Height="40" ClipToBounds="True"/>
+                <StackPanel Margin="10,0,0,0">
+                    <TextBlock Text="Username" Foreground="White" FontSize="14" FontWeight="Bold"/>
+                    <TextBlock Text="Admin" Foreground="White" FontSize="12"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Window for Invoice -->
+        <Grid Margin="200,60,0,0">
+            <TextBlock Text="Invoice Details" FontSize="18" FontWeight="Bold" Margin="20,10,0,0"/>
+            <StackPanel Margin="20,40,20,20">
+                <TextBox materialDesign:HintAssist.Hint="Customer Name" Height="40" Margin="0,5,0,5" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox materialDesign:HintAssist.Hint="Product Name" Height="40" Margin="0,5,0,5" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox materialDesign:HintAssist.Hint="Quantity" Height="40" Margin="0,5,0,5" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <TextBox materialDesign:HintAssist.Hint="Total Price" Height="40" Margin="0,5,0,5" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                <Button Content="Generate Invoice" Background="#2980B9" Foreground="White" Height="40"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
