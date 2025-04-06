@@ -18,11 +18,19 @@ namespace Management_System_Project_DS_2
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Login : Window
     {
-        public MainWindow()
+        public Login()
         {
             InitializeComponent();
+        }
+
+
+        private void loginbutton(object sender, RoutedEventArgs e)
+        {
+            Dashboard dashboard = new Dashboard(); // Replace with your actual Dashboard class
+            dashboard.Show();
+            this.Close(); // Close the login window
         }
     }
 }

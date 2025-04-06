@@ -89,7 +89,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -103,8 +103,8 @@
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -145,22 +145,7 @@
     <Resource Include="14547791_rm222batch2-kul-27.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="IMG_0872.JPG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Screenshot 2025-03-16 222950.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Makkah-Traders-Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Makkah Traders Logo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Makkah-Traders-Logo.jpg" />
@@ -169,25 +154,7 @@
     <Resource Include="category.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="box.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="commercial.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="bar-chart.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="group.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="supplier.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="down-arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="profile.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="profile1.png" />
