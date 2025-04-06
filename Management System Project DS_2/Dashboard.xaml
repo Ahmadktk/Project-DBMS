@@ -72,7 +72,7 @@
                 <DockPanel VerticalAlignment="Top" Margin="0,20,0,0">
                     <StackPanel>
                         <!-- Sidebar Buttons -->
-                        <Button Background="Transparent" Foreground="White" BorderBrush="Transparent" Padding="10" HorizontalContentAlignment="Left" Margin="45,0,0,0">
+                        <Button Background="Transparent" Foreground="White" BorderBrush="Transparent" Padding="10" HorizontalContentAlignment="Left" Margin="45,0,0,0" Click="Categorybutton">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/category.png" Width="20" Height="20" Margin="0,0,10,0"/>
                                 <TextBlock Text="Category" VerticalAlignment="Center"/>

@@ -23,5 +23,11 @@ namespace Management_System_Project_DS_2
         {
             InitializeComponent();
         }
+
+        private void Categorybutton(object sender, RoutedEventArgs e)
+        {
+            Category categoryWindow = new Category(); // Replace Category with the actual name of your category window class
+            categoryWindow.Show(); // Open the Category window
+        }
     }
 }
