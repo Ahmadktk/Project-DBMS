@@ -3,71 +3,344 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:Management_System_Project_DS_2"
         mc:Ignorable="d"
-        Title="Dashboard" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Dashboard" Height="600" Width="1000" WindowStartupLocation="CenterScreen" Background="White">
+
+
+    <Window.Resources>
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="15"
+                            Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
 
     <Grid>
-        <!-- Side Menu -->
-        <Grid Width="200" HorizontalAlignment="Left">
-            <Grid.Background>
-                <ImageBrush/>
-            </Grid.Background>
-            <StackPanel>
-                <TextBlock Text="Dashboard" Foreground="White" FontSize="18" FontWeight="Bold" Margin="10"/>
-                <Button Content="Category" Background="Transparent" Foreground="White" Margin="5"/>
-                <Button Content="Products" Background="Transparent" Foreground="White" Margin="5"/>
-                <Button Content="Orders" Background="Transparent" Foreground="White" Margin="5"/>
-                <Button Content="Reports" Background="Transparent" Foreground="White" Margin="5"/>
-                <Button Content="Users" Background="Transparent" Foreground="White" Margin="5"/>
-                <Button Content="Suppliers" Background="Transparent" Foreground="White" Margin="5"/>
-                <Button Content="Logout" Background="Transparent" Foreground="White" Margin="5"/>
-            </StackPanel>
-        </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Grid Height="60" Background="#34495E" VerticalAlignment="Top" Margin="200,0,0,0">
+        <Grid Grid.Row="0" Background="#FF2C3E50">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Shop Name & Logo -->
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
-                <!-- Logo -->
-                <Image Source="/Makkah-Traders-Logo.jpg" Width="40" Height="40" 
-                    HorizontalAlignment="Left" VerticalAlignment="Top" 
-                    Stretch="UniformToFill">
+            <!-- Shop Name and Logo -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                <Image Source="/Makkah-Traders-Logo.jpg" Width="40" Height="40" Stretch="UniformToFill">
                     <Image.Clip>
                         <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
                     </Image.Clip>
                 </Image>
-                <TextBlock Text="Makkah Traders" Foreground="White" FontSize="16" FontWeight="Bold" Margin="10,0,0,0"/>
+                <TextBlock Text="Makkah Traders" Foreground="White" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
             </StackPanel>
 
-            <!-- Time & User Info -->
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="1" Margin="10">
-                <TextBlock Name="CurrentTime" Foreground="White" FontSize="14" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                <Image Source="/user_dp.png" Width="40" Height="40" ClipToBounds="True"/>
-                <StackPanel Margin="10,0,0,0">
-                    <TextBlock Text="Username" Foreground="White" FontSize="14" FontWeight="Bold"/>
-                    <TextBlock Text="Admin" Foreground="White" FontSize="12"/>
+            <!-- User Info -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="2" Margin="0,0,10,0">
+                <Image Source="/profile1.png" Width="40" Height="40" ClipToBounds="True" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Username" Foreground="White" FontSize="14" FontFamily="Montserrat" FontWeight="Medium" VerticalAlignment="Center"/>
+                    <TextBlock Text="Admin" Foreground="White" FontSize="12" VerticalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
 
-        <!-- Main Window for Invoice -->
-        <Grid Margin="200,60,0,0">
-            <TextBlock Text="Invoice Details" FontSize="18" FontWeight="Bold" Margin="20,10,0,0"/>
-            <StackPanel Margin="20,40,20,20">
-                <TextBox materialDesign:HintAssist.Hint="Customer Name" Height="40" Margin="0,5,0,5" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <TextBox materialDesign:HintAssist.Hint="Product Name" Height="40" Margin="0,5,0,5" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <TextBox materialDesign:HintAssist.Hint="Quantity" Height="40" Margin="0,5,0,5" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <TextBox materialDesign:HintAssist.Hint="Total Price" Height="40" Margin="0,5,0,5" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                <Button Content="Generate Invoice" Background="#2980B9" Foreground="White" Height="40"/>
+        <!-- Main Content Area -->
+        <Grid Grid.Row="1" Background="#FF2C3E50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar -->
+            <Border Background="#2C3E50" CornerRadius="0,0,50,0" Margin="0" Grid.Column="0">
+                <DockPanel VerticalAlignment="Top" Margin="0,20,0,0">
+                    <StackPanel>
+                        <!-- Sidebar Buttons -->
+                        <Button Background="Transparent" Foreground="White" BorderBrush="Transparent" Padding="10" HorizontalContentAlignment="Left" Margin="45,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/category.png" Width="20" Height="20" Margin="0,0,10,0"/>
+                                <TextBlock Text="Category" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Background="Transparent" Foreground="White" BorderBrush="Transparent" Padding="10" HorizontalContentAlignment="Left" Margin="45,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Products.png" Width="20" Height="20" Margin="0,0,10,0"/>
+                                <TextBlock Text="Products" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Background="Transparent" Foreground="White" BorderBrush="Transparent" Padding="10" HorizontalContentAlignment="Left" Margin="45,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/orders.png" Width="20" Height="20" Margin="0,0,10,0"/>
+                                <TextBlock Text="Orders" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Background="Transparent" Foreground="White" BorderBrush="Transparent" Padding="10" HorizontalContentAlignment="Left" Margin="45,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Reports.png" Width="20" Height="20" Margin="0,0,10,0"/>
+                                <TextBlock Text="Reports" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Background="Transparent" Foreground="White" BorderBrush="Transparent" Padding="10" HorizontalContentAlignment="Left" Margin="45,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/supplier.png" Width="20" Height="20" Margin="0,0,10,0"/>
+                                <TextBlock Text="Suppliers" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Background="Transparent" Foreground="White" BorderBrush="Transparent" Padding="10" HorizontalContentAlignment="Left" Margin="45,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/users.png" Width="20" Height="20" Margin="0,0,10,0"/>
+                                <TextBlock Text="Users" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Logout Button with Curved Corners -->
+                        <Border Background="White" CornerRadius="15" Margin="10,40,10,0">
+                            <Button Background="Transparent" Foreground="#2C3E50" BorderBrush="Transparent" Padding="5" HorizontalContentAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/logout.png" Width="20" Height="20" Margin="0,0,10,0" RenderTransformOrigin="0.5,0.5">
+                                        <Image.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="-1"/>
+                                                <SkewTransform/>
+                                                <RotateTransform Angle="-280.305"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Image.RenderTransform>
+                                    </Image>
+                                    <TextBlock Text="Logout" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+
+            <!-- Main Content Area -->
+<Border Grid.Column="1" Background="#F4F8FB" Margin="0,0,0,0" CornerRadius="50,0,0,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Invoice" FontSize="24" FontWeight="Bold" Margin="20,20,0,20" />
+
+        <!-- Invoice Section -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="#FFF8F8F8">
+            <StackPanel>
+
+                <!-- Logo and Invoice Info Row -->
+                <Grid Margin="0 0 0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Logo -->
+                    <Border Height="100" Background="#f0f0f0" Width="100" CornerRadius="100" Grid.Column="0" HorizontalAlignment="Left" Margin="0,3,0,2">
+                        <Image Source="/Makkah-Traders-Logo.png"/>
+                    </Border>
+
+                    <!-- Invoice Info Card -->
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
+
+                        <Border BorderBrush="#DDD" BorderThickness="1" Background="White" CornerRadius="4">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Invoice Number Row -->
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Invoice Number:" FontWeight="Bold" Padding="10"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Text="#123" VerticalAlignment="Center" Padding="10"/>
+
+                                <!-- Due Date Row -->
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Due Date:" FontWeight="Bold" Padding="10"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="DueDateText" Text="12 Aug 2020" Padding="10"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+
+                </Grid>
+
+                <!-- From & Bill To Section -->
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- From Info -->
+                    <StackPanel Grid.Column="0" Margin="5 0 0 0">
+                        <TextBlock Text="From" FontSize="16" FontWeight="Bold" Foreground="#2C3E50" Margin="0 0 0 0" />
+                        <Border Background="#f8f8f8" BorderBrush="#ddd" BorderThickness="1" Padding="10" CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="Business Name:" FontWeight="Bold"/>
+                                <TextBox Margin="0,0,0,5"/>
+
+                                <TextBlock Text="Email Address:" FontWeight="Bold"/>
+                                <TextBox Margin="0,0,0,5"/>
+
+                                <TextBlock Text="Phone Number:" FontWeight="Bold"/>
+                                <TextBox Margin="0,0,0,5"/>
+
+                                <TextBlock Text="Address:" FontWeight="Bold"/>
+                                <TextBox Margin="0,0,0,5"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Bill To Info -->
+                    <StackPanel Grid.Column="1" Margin="10 0 0 0">
+                        <TextBlock Text="Bill To" FontSize="16" FontWeight="Bold" Foreground="#2C3E50" Margin="0 0 0 0" />
+                        <Border Background="#f8f8f8" BorderBrush="#ddd" BorderThickness="1" Padding="10" CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="Client Name:" FontWeight="Bold"/>
+                                <TextBox Margin="0,0,0,5"/>
+
+                                <TextBlock Text="Email Address:" FontWeight="Bold"/>
+                                <TextBox Margin="0,0,0,5"/>
+
+                                <TextBlock Text="Phone Number:" FontWeight="Bold"/>
+                                <TextBox Margin="0,0,0,5"/>
+
+                                <TextBlock Text="Address:" FontWeight="Bold"/>
+                                <TextBox Margin="0,0,0,5"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Table Header -->
+                <Border Background="#0D1A4D" Height="40" Margin="5 0 0 5" CornerRadius="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Item" Foreground="White" VerticalAlignment="Center" Margin="10 0" Grid.Column="0" FontWeight="Bold"/>
+                        <TextBlock Text="Quantity" Foreground="White" VerticalAlignment="Center" Grid.Column="1" FontWeight="Bold"/>
+                        <TextBlock Text="Rate" Foreground="White" VerticalAlignment="Center" Grid.Column="2" FontWeight="Bold"/>
+                        <TextBlock Text="Amount" Foreground="White" VerticalAlignment="Center" Grid.Column="3" FontWeight="Bold"/>
+                    </Grid>
+                </Border>
+
+                <!-- Item Row Example -->
+                <Grid Height="40" VerticalAlignment="Top" Margin="0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Margin="5" Text="Description of item/service..." Foreground="Gray"/>
+                    <TextBox Grid.Column="1" Margin="5" Text="1" />
+                    <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="5" VerticalAlignment="Center">
+                        <TextBlock Text="$" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                        <TextBox Width="60" Text="0"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="3" Text="$0.00" VerticalAlignment="Center" Margin="5" Foreground="Gray"/>
+                </Grid>
+
+                <!-- Add Item Button -->
+                <Button Content="Add Item +" Width="124" Height="35"
+                 Background="#FF0D1A4D" Foreground="White" FontWeight="Bold"
+                 Margin="5,10,0,20" HorizontalAlignment="Left"
+                 Style="{StaticResource RoundedButtonStyle}"/>
+
+                <!-- Notes and Totals Summary Section -->
+                <Grid Margin="0,10,0,20" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Notes Section -->
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Notes" FontWeight="Bold" FontSize="14" Margin="5,0,0,5"/>
+                        <TextBox Height="60" Margin="5,0,0,20"/>
+                    </StackPanel>
+
+                    <!-- Totals Summary -->
+                    <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Right">
+                        <!-- Total -->
+                        <Grid Margin="0,0,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Total" FontSize="14" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                            <TextBlock Text="$0.00" FontSize="14" FontWeight="Bold" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,50,0"/>
+                        </Grid>
+
+                        <!-- Amount Paid with $ prefix inside input -->
+                        <Grid Margin="0,0,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Amount Paid" FontSize="14" VerticalAlignment="Center"/>
+
+                            <Border Background="White" BorderBrush="#ccc" BorderThickness="1" CornerRadius="5" Grid.ColumnSpan="2" Margin="90,0,10,0">
+                                <Grid Margin="5,2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="$" VerticalAlignment="Center" Foreground="Gray" Margin="0,0,4,0"/>
+                                    <TextBox BorderThickness="0" VerticalContentAlignment="Center" Grid.Column="1"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <!-- Balance Due -->
+                        <Grid Margin="0,0,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Balance Due" FontSize="14" VerticalAlignment="Center" Margin="2,0,50,0"/>
+                            <TextBlock Text="$0.00" FontSize="14" FontWeight="Bold" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,50,0"/>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+
             </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Border>
+
+
         </Grid>
     </Grid>
 </Window>
